@@ -13,3 +13,14 @@ uv run check_env.py
 ### Hardware Note
 
 The local machine includes an NVIDIA GPU; however, due to hardware limitations, the CPU environment was chosen to ensure maximum stability and reproducibility.
+
+## GPU Verification (Google Colab)
+
+The project was successfully executed on a GPU Google Colab runtime.
+
+List command on Colab:
+1. !git clone https://github.com/Aleex87/ml-env-exam.git
+2. %cd ml-env-exam
+3. !pip install torch scikit-learn pandas  OR:  !pip install torch scikit-learn pandas --quiet
+4. !python check_env.py
+

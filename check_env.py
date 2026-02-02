@@ -22,6 +22,7 @@ else:
 print(f"Using device: {device}")
 
 # Tensor test
+#torch.cuda.is_available()
 x = torch.rand(3, 3).to(device)
 y = torch.rand(3, 3).to(device)
 
