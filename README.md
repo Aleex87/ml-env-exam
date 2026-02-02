@@ -1,8 +1,8 @@
-# ml-env-exam
+# ML-env-exam
 
 This project demonstrates how to set up an isolated and reproducible machine learning environment using **uv**.
 
-> Requirements 
+## Requirements 
 - python 3.11
 - uv
 
@@ -10,13 +10,26 @@ Clone the repository and run:
 
 uv run check_env.py
 
+## Validation:
+
+The script validates:
+
+Library versions
+
+GPU availability
+
+Tensor computation
+
+If no compatible GPU is detected, the script automatically falls back to CPU.
+
 ### Hardware Note
 
 The local machine includes an NVIDIA GPU; however, due to hardware limitations, the CPU environment was chosen to ensure maximum stability and reproducibility.
 
 ## GPU Verification (Google Colab)
 
-The project was successfully executed on a GPU Google Colab runtime.
+The project was successfully executed on a GPU Google Colab runtime,
+and confirming CUDA compatibility.
 
 List command on Colab:
 1. !git clone https://github.com/Aleex87/ml-env-exam.git
