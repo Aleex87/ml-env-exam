@@ -20,7 +20,7 @@ GPU availability
 
 Tensor computation
 
-If no compatible GPU is detected, the script automatically falls back to CPU.
+The script automatically selects the best available compute device (CUDA, Apple MPS, or CPU) to ensure portability across different hardware configurations.
 
 ### Hardware Note
 
