@@ -8,25 +8,37 @@ print(f"PyTorch version: {torch.__version__}")
 print(f"Scikit-learn version: {sklearn.__version__}")
 print(f"Pandas version: {pd.__version__}")
 
-cuda_available = torch.cuda.is_available()
+# --------------------------------------------------
+# Device detection (CUDA / Apple MPS / CPU)
+# --------------------------------------------------
 
-print(f"\nCUDA available: {cuda_available}")
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+    print(f"\nGPU detected (CUDA): {torch.cuda.get_device_name(0)}")
 
-if cuda_available:
-    print(f"GPU detected: {torch.cuda.get_device_name(0)}")
-    device = "cuda"
+elif torch.backends.mps.is_available():
+    device = torch.device("mps")
+    print("\nApple Silicon GPU detected (MPS)")
+
 else:
-    print("No GPU detected — running on CPU")
-    device = "cpu"
+    device = torch.device("cpu")
+    print("\nNo GPU detected — running on CPU")
 
 print(f"Using device: {device}")
 
+# --------------------------------------------------
 # Tensor test
-#torch.cuda.is_available()
-x = torch.rand(3, 3).to(device)
-y = torch.rand(3, 3).to(device)
+# --------------------------------------------------
 
-result = x @ y
+try:
+    x = torch.rand(3, 3).to(device)
+    y = torch.rand(3, 3).to(device)
 
-print("\nTensor computation successful.")
-print(result)
+    result = x @ y
+
+    print("\nTensor computation successful on device:", device)
+    print(result)
+
+except Exception as e:
+    print("\nTensor computation FAILED.")
+    print("Error:", str(e))
